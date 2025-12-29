@@ -1,0 +1,42 @@
+/*
+  @author : Sreelekha Mondal.
+  @date : 10 October, 2025. 
+  HTML file : HTML_DIY-03_Sreelekha_Mondal_II.html
+*/
+
+/* Styling for all the divs. */
+.div_structure
+{
+  margin : auto;
+  margin-bottom : 20px;
+  padding-left : 28px;
+  height : auto;
+  width : 40%;
+  border : 2px solid;
+  border-radius : 10px;
+  font-family : Norasi;
+}
+
+/* Font size for all the paragraphs. */
+.para_text
+{
+  font-size : 20px;  
+}
+
+/* Color combination for the first div element. */
+.div_color1
+{
+  box-shadow : 2px 4px 8px #80A1BA;
+  border-color : #91C4C3;
+  background-color : #F5EFE6;
+  color : #001F3F;
+}
+
+/* Color combination for all the div elements except the  first div. */
+.div_color2
+{
+  box-shadow : 2px 4px 8px #555879;
+  border-color : #98A1BC;
+  background-color : #F1EEDC;
+  color : #402E7A;
+}
