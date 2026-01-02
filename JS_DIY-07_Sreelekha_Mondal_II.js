@@ -7,7 +7,8 @@ async function fetchData()
 {
   try 
   {
-    let ifTrue = await fetch('https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m');
+    let longitude = document.getElementById("longitude");
+    let ifTrue = await fetch('https://api.open-meteo.com/v1/forecast?latitude=52.32&longitude=13.41&hourly=temperature_2m&timezone=Asia%2FBangkok');
     console.log(ifTrue);
     let data = await ifTrue.json();
     console.log(data);
@@ -17,5 +18,3 @@ async function fetchData()
     console.error('Error:', error);
   }
 }
-
-fetchData();
