@@ -1,8 +1,9 @@
-// Creating the array.
+// Creating the strings.
 const city = "Delhi";
 const temp = "30°C";
+
+// Using the value (string) of the variables using template literals
 let text = `City : ${city}, Temp : ${temp}`;
-console.log(text);
 document.getElementById("weather").innerHTML = text;
 
 async function fetchData() 
