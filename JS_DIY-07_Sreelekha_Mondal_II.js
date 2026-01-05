@@ -1,7 +1,9 @@
 // Creating the array.
-const city = `City: Delhi, Temp: 30°C`;
-
-document.getElementById("weather").innerHTML = city;
+const city = "Delhi";
+const temp = "30°C";
+let text = `City : ${city}, Temp : ${temp}`;
+console.log(text);
+document.getElementById("weather").innerHTML = text;
 
 async function fetchData() 
 {
