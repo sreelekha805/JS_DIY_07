@@ -1,4 +1,4 @@
-# DOM Manipulation
+# AJAX and API Call
 **The TASK :**
 + Use template literals to display City: Delhi, Temp: 30°C.
 + Fetch data from a free weather API using async/await.
