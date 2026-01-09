@@ -1,12 +1,57 @@
-// Creating the strings.
-const city = "Delhi";
-const temp = "30°C";
+// Accessing the input field with id 'place', i.e, an html elemet and stored it in the variable Place.
+const Place = document.getElementById("place");
 
-// Using the value (string) of the variables using template literals
-let text = `City : ${city}, Temp : ${temp}`;
+// Accessing the input field with id 'temp', i.e, an html elemet and stored it in the variable Temp.
+const Temp = document.getElementById("temp");
 
-// Added the string in the html element dynamically.
-document.getElementById("weather").innerHTML = text;
+// Accessing the html elemet for storing the string which will be created with the values of the variables place and Temp.
+let str = document.getElementById("weather");
+
+/* 
+  This function is created to access the values of the input field and then generate the string with the data given by the user
+  and then display the string through the html element dynamically .
+*/
+function displayString()
+{
+  // Accessing the value of the input field which is labeled as place.
+  const city = Place.value;
+
+  // Accessing the value of the input field which is labeled as temp.
+  const tempC = Temp.value;
+
+  // When user will not give any input for place, there will be an alert.
+  if (city === '')
+  {
+    alert("Please enter the valid Place");
+    return;
+  }
+
+  // When user will not give any input for temp, there will be an alert.
+  if (tempC === '')
+  {
+    alert("Please enter the valid temperature");
+    return;
+  }
+
+  // Storing the value of the variables 'city', 'tempC' using template literals to the variable 'text'.
+  text = `City : ${city}, Temp : ${tempC}°C`;
+
+  // Added the string in the html element dynamically.
+  str.innerHTML = text;
+}
+
+// When user will click the RESET button , this function will work. This function will clear all the input fields and also the output.
+function clearInput ()
+{
+  // The value of the input field labeled as 'place' which is accessed here with the variable 'Place' will be replaced with the empty string.
+  Place.value = '';
+
+  // The value of the input field labeled as 'temp' which is accessed here with the variable 'Temp' will be replaced with the empty string.
+  Temp.value = '';
+
+  // The content of the element which is accessed in the variable 'str' will be replaced with the empty string.
+  str.innerHTML = '';
+}
 
 //This function is used to displaying the fetched data in the browser.
 function displayData (weatherData)
