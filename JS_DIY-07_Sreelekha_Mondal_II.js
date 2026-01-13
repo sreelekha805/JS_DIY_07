@@ -111,7 +111,7 @@ async function fetchData()
   {
     // Requesting to the web server to fetch the data from the API.
     // The await is the keyword, is used to wait for a promise to resolve.
-    let ifTrue = await fetch('https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current=temperature_2m');
+    let ifTrue = await fetch('https://api.open-meteo.com/v1/forecast?latitude=28.38&longitude=77.12&current=temperature_2m&timezone=auto');
     console.log(ifTrue);
 
     // The data is fetched successfully.
