@@ -1,134 +1,157 @@
-// Accessing the input field with id 'place', i.e, an html elemet and stored it in the variable Place.
-const Place = document.getElementById("place");
+/*
+  Creating the array of objects to store the latitude and longitude values of some cities. Each objects contains the city name with 
+  their coordinates.
+*/
+let cityInfo = 
+[
+  // City - Ranchi
+  {
+    name : 'Ranchi', 
+    lat : 23.34, 
+    long : 85.29
+  }, 
 
-// Accessing the input field with id 'temp', i.e, an html elemet and stored it in the variable Temp.
-const Temp = document.getElementById("temp");
+  // City - Raipur
+  {
+    name : 'Raipur', 
+    lat : 21.25,
+    long : 81.62
+  }, 
 
-// Accessing the html elemet for storing the string which will be created with the values of the variables place and Temp.
-let str = document.getElementById("weather");
+  // City - Medinipur
+  {
+    name : 'Medinipur', 
+    lat : 22.43, 
+    long : 87.32
+  }, 
+
+  // City - Kollam
+  {
+    name : 'Kollam', 
+    lat : 8.89, 
+    long : 76.61
+  }, 
+
+  // City - Bhubaneswar
+  {
+    name : 'Bhubaneswar', 
+    lat : 20.29, 
+    long : 85.82
+  }, 
+
+  // City - Mumbai
+  {
+    name : 'Mumbai', 
+    lat : 19.07, 
+    long : 72.87
+  }, 
+
+  // City - Delhi
+  {
+    name : 'Delhi', 
+    lat : 28.67, 
+    long : 77.06
+  }, 
+
+  // City - Jaipur
+  {
+    name : 'Jaipur', 
+    lat : 26.907, 
+    long : 75.73
+  }
+]
 
 /* 
-  This function is created to access the values of the input field and then generate the string with the data given by the user
-  and then display the string through the html element dynamically .
+  When user will select any of the city name from thew dropdown list, the city name will be stored in this variable. By default the 
+  name 'Ranchi' will be selected.
 */
-function displayString()
+let userSelectCity = document.getElementById("option").value;
+console.log(userSelectCity);
+
+/*
+  This function is created to set a number for each city name as a unique identity. The identity will be number. 
+  Here the numbers are 0, 1, 2, ...
+  Because through these numbers we can access the exact object for each selected city names with the index number of the array.
+  Means, if the city is 'Ranchi', then the object where the data of this city is present is stored in the 0th index of the array.
+  And the unique id for 'Ranchi' will be 0, according to this function. So, in future, we can access the index number easily through the 
+  unique id.
+  The function will take the user input and it will return the cityId that will be the unique id.
+*/
+function uniqueIdForEachCity (cityName)
 {
-  // Accessing the value of the input field which is labeled as place.
-  const city = Place.value;
+  let cityId;
 
-  // Accessing the value of the input field which is labeled as temp.
-  const tempC = Temp.value;
-
-  // When user will not give any input for place, there will be an alert.
-  if (city === '')
+  if (cityName === 'Ranchi')
   {
-    alert("Please enter the valid Place");
-    return;
+    cityId = 0;
   }
 
-  // When user will not give any input for temp, there will be an alert.
-  if (tempC === '')
+  else if (cityName === 'Raipur')
   {
-    alert("Please enter the valid temperature");
-    return;
+    cityId = 1;
   }
 
-  // Storing the value of the variables 'city', 'tempC' using template literals to the variable 'text'.
-  text = `City : ${city}, Temp : ${tempC}°C`;
-
-  // Added the string in the html element dynamically.
-  str.innerHTML = text;
-}
-
-// When user will click the RESET button , this function will work. This function will clear all the input fields and also the output.
-function clearInput ()
-{
-  // The value of the input field labeled as 'place' which is accessed here with the variable 'Place' will be replaced with the empty string.
-  Place.value = '';
-
-  // The value of the input field labeled as 'temp' which is accessed here with the variable 'Temp' will be replaced with the empty string.
-  Temp.value = '';
-
-  // The content of the element which is accessed in the variable 'str' will be replaced with the empty string.
-  str.innerHTML = '';
-}
-
-//This function is used to displaying the fetched data in the browser.
-function displayData (weatherData)
-{
-  // Accessing the main div of the html document.
-  let parent = document.getElementById("parent");
-
-  /* 
-    All the fatched data are stored in different variables, to access them as the array elements and display them within a loop, using 
-    the index number of the elements.
-  */
-
-  let latitude = weatherData.latitude;
-
-  let longitude = weatherData.longitude;
-
-  let timezone = weatherData.timezone;
-
-  let time = ((weatherData.current.time) + (weatherData.current_units.time));
-
-  let interval = ((weatherData.current.interval) + (weatherData.current_units.interval));
-
-  let temperature = ((weatherData.current.temperature_2m) + (weatherData.current_units.temperature_2m));
-
-  // Creating the array with the variables.
-  let A = [latitude, longitude, timezone, time, interval, temperature];
-
-  // Calculating the length of the array.
-  let length = A.length;
-
-  // Initializing the loop counter
-  let i = 0;
-  while (i < length)
+  else if (cityName === 'Medinipur')
   {
-    // Creating the div element within the main div.
-    let child = document.createElement("div");
-
-    // Adding the content of the variables which are used as the elements in the array, to the child div dynamically.
-    child.innerHTML = A[i];
-    parent.appendChild(child);
-
-    // Update the loop counter.
-    i = (i + 1);
+    cityId = 2;
   }
+ 
+  else if (cityName === 'Kollam')
+  {
+    cityId = 3;
+  }
+
+  else if (cityName === 'Bhubaneswar')
+  {
+    cityId = 4;
+  }
+
+  else if (cityName === 'Mumbai')
+  {
+    cityId = 5;
+  }
+
+  else if (cityName === 'Delhi')
+  {
+    cityId = 6;
+  }
+
+  else if (cityName === 'Jaipur')
+  {
+    cityId = 7;
+  }
+
+  return cityId;
 }
 
-// The keyword async before a function, that means the function will return a promise. 
-async function fetchData() 
+//The return value (which will be the unique id) of the function uniqueIdForEachCity is stored in this variable.
+let getId = uniqueIdForEachCity (userSelectCity);
+console.log(getId);
+
+/*
+  This function is created to get the latitude and longitude value from the user input.
+  This function will take the array of object and id which will be the index number of the array where the object is stored.
+  Then it will access the latitude and longitude for the particular city, then the function will return them.
+*/
+function getCoordinate (obj, uniqueId)
 {
-  // Here the try-catch block is used to handle the error (if there) during the fetching of the data.
+  // Accessing the value of latitude.
+  let cityLat = obj[uniqueId].lat;
+
+  // Accessing the value of longitude.
+  let cityLong = obj[uniqueId].long;
 
   /*
-    The try-catch block gives the flexibility to execute the program, if there any error occurs in the try block this part will be skipped, 
-    the catch block will be executed and it will throw any message of error instead of terminating the program. 
+    The function is returning multiple values of variables. So to return the multiple values, the values of the variables are stored in a
+    array, then returning the array.
   */
-  try 
-  {
-    // Requesting to the web server to fetch the data from the API.
-    // The await is the keyword, is used to wait for a promise to resolve.
-    let ifTrue = await fetch('https://api.open-meteo.com/v1/forecast?latitude=28.38&longitude=77.12&current=temperature_2m&timezone=auto');
-    console.log(ifTrue);
-
-    // The data is fetched successfully.
-    let data = await ifTrue.json();
-    console.log(data);
-
-    // Call the displayData function, to display the fetched data to the user.
-    displayData(data);
-  } 
-
-  // This part is optional, if there is any error during the fetching data, this part will throw the error to the user.
-  catch (error) 
-  {
-    // The error message will display in the console.
-    console.error('Error:', error);
-  }
+  return [cityLat, cityLong];
 }
 
-// Call the function
-fetchData();
+/* 
+  As the function 'getCoordinate' is returning an array, so to store the returning values, we need an array, so in this array the function 
+  is called. After getting the values, we can access them individually.
+*/
+let [getLat, getLong] = getCoordinate (cityInfo, getId);
+console.log(getLat);
+console.log(getLong);
