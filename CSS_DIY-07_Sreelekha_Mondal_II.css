@@ -4,39 +4,54 @@
   HTML file : HTML_DIY-03_Sreelekha_Mondal_II.html
 */
 
-/* Styling for all the divs. */
+/* Importing a google font to this web page */
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+/* Styling the text of the div which we will use as a heading. */
+.heading
+{
+  text-align : center;
+  font-family : "Caveat", cursive;
+  font-size : 25px;
+  font-weight : bold;
+  color : #57595B;
+}
+
+/* Set the structure for the main div where the options will be displayed and the output will display. */
 .div_structure
 {
   margin : auto;
-  margin-bottom : 20px;
-  padding-left : 28px;
-  height : auto;
-  width : 40%;
+  margin-top : 30px;
+  padding : 20px;
+  width : 60%;
+  height : 80px;
+  border : 4px solid;
+  border-radius : 20px;
+}
+
+/* Color combination for the div where the options will be displayed and the output will display. */
+.div_color
+{
+  box-shadow : 2px -2px 6px #5A0E24;
+  border-color : #452829;
+  background-color : #F8F4EC;
+}
+
+/* Font size for the text within the main div. */
+.div_text
+{
+  font-family : Norasi;  
+  font-size : 18px;
+  color : #452829;
+  font-weight : bold;
+}
+
+/* Adding the height, width, and background color to the submit button. */
+.button_style
+{
+  width : 80px;
+  height : 30px;
   border : 2px solid;
-  border-radius : 10px;
-  font-family : Norasi;
-}
-
-/* Font size for all the paragraphs. */
-.para_text
-{
-  font-size : 20px;  
-}
-
-/* Color combination for the first div element. */
-.div_color1
-{
-  box-shadow : 2px 4px 8px #80A1BA;
-  border-color : #91C4C3;
-  background-color : #F5EFE6;
-  color : #001F3F;
-}
-
-/* Color combination for all the div elements except the  first div. */
-.div_color2
-{
-  box-shadow : 2px 4px 8px #555879;
-  border-color : #98A1BC;
-  background-color : #F1EEDC;
-  color : #402E7A;
+  border-radius : 15px;
+  background-color : #F3E8DF;
 }

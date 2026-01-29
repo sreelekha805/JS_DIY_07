@@ -7,7 +7,6 @@ let cityInfo =
   // City - Ranchi
   {
     name : 'Ranchi',
-    cityId : 0, 
     lat : 23.34, 
     long : 85.29
   }, 
@@ -15,7 +14,6 @@ let cityInfo =
   // City - Raipur
   {
     name : 'Raipur', 
-    cityId : 1,
     lat : 21.25,
     long : 81.62
   }, 
@@ -23,7 +21,6 @@ let cityInfo =
   // City - Medinipur
   {
     name : 'Medinipur', 
-    cityId : 2,
     lat : 22.43, 
     long : 87.32
   }, 
@@ -31,7 +28,6 @@ let cityInfo =
   // City - Kollam
   {
     name : 'Kollam', 
-    cityId : 3,
     lat : 8.89, 
     long : 76.61
   }, 
@@ -39,7 +35,6 @@ let cityInfo =
   // City - Bhubaneswar
   {
     name : 'Bhubaneswar', 
-    cityId : 4,
     lat : 20.29, 
     long : 85.82
   }, 
@@ -47,7 +42,6 @@ let cityInfo =
   // City - Mumbai
   {
     name : 'Mumbai', 
-    cityId : 5,
     lat : 19.07, 
     long : 72.87
   }, 
@@ -55,7 +49,6 @@ let cityInfo =
   // City - Delhi
   {
     name : 'Delhi', 
-    cityId : 6,
     lat : 28.67, 
     long : 77.06
   }, 
@@ -63,7 +56,6 @@ let cityInfo =
   // City - Jaipur
   {
     name : 'Jaipur', 
-    cityId : 7,
     lat : 26.907, 
     long : 75.73
   }
@@ -93,7 +85,7 @@ function getCoordinate (obj, uniqueId)
   This function is created to fetch data from the api. It will take the coordinates and then it will request the API with the coordinates 
   and then if the API response is true, it will return the data otherwise the function will through an error.
 */
-async function fetchData(lat, long) 
+async function fetchData(lat, long)
 {
   // Here the try-catch block is used to handle the error (if there) during the fetching of the data.
 
@@ -108,10 +100,17 @@ async function fetchData(lat, long)
     let ifTrue = await fetch('https://api.open-meteo.com/v1/forecast'+'?latitude='+lat+'&longitude='+long+'&current=temperature_2m'+'&timezone=auto');
     console.log(ifTrue);
 
-    // When the API response will be true, it will return the data.
+    // When the API response will be true, it will return the json.
     let data = await ifTrue.json();
-    console.log(data.current.temperature_2m);
-    return data;
+
+    // The value of the current temperature parameter from the json will be stored in this variable.
+    let temp = data.current.temperature_2m;
+
+    // Accessing the html element with the ud `temperature` to this variable.
+    let result = document.getElementById("temperature");
+
+    // Changing the content of the variable means actually changing the content of the html element.
+    result.innerHTML = 'The Current temperature is '+temp+'°c';
   } 
 
   // This part is optional, if there is any error during the fetching data, this part will throw the error to the user.
@@ -126,9 +125,9 @@ async function fetchData(lat, long)
   This function is created to take the user input, i.e, the city name. Then this function will display the desired output means the 
   current temperature.
   At first, the user input will be accessed.
-  Then the City Id for the given City will be accessed.
+  Then the index number of the object of the City will be accessed.
   Then The coordinates will be accessed.
-  Then the temperature will be fetched for the given coordinates.
+  Then the the function will call the `fetchData` function to fetch the temperarture for the given coordinates.
 */
 function displayTemp (obj)
 {
@@ -138,9 +137,9 @@ function displayTemp (obj)
   console.log(cityName);
 
   /*
-    Initialize th cityId with -1, because all the objects are stored in the array index(s). And all the objects have a property called cityId,
-    So when I am trying to get the data for the city 'Ranchi' the cityId will be 0, which is the index number where the object for the 
-    city Ranchi, is stored. So the (-1) cityId and the index number is invalid. So it is initialized with the -1 value.
+    Initialize th cityId with -1, because all the objects are stored in the array index(s). So when I am trying to get the data for the 
+    city 'Ranchi' the index number of the array will be 0. The index number always starts from 0 (to +ve integers). So the (-1) index number 
+    is invalid. So it is initialized with the -1 value.
   */
   let cityId = (-1);
 
@@ -151,8 +150,8 @@ function displayTemp (obj)
   let i = 0;
 
   /*
-    This loop will work until the user input and the object property will not be the same, when it will match, the cityId will be stored in 
-    a variable.
+    This loop will work until the user input and the object property called name will not be the same, when it will match, the index number 
+    of the object will be stored in a variable.
   */
   while (i < NoC)
   {
@@ -170,10 +169,7 @@ function displayTemp (obj)
   console.log(getLat);
   console.log(getLong);
 
-  // This asynchronous function is called to fetch the temperature for the given coordinates.
+  // Calling the asynchronous function to display the current temperature to the user.
   fetchData(getLat, getLong);
-  console.log (fetchData);
   return;
 }
-
-
