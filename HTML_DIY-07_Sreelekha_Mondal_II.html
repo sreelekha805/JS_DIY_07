@@ -12,20 +12,57 @@
 
   <!-- The head tag is used define the head of the webpage where the title of the webpage will appear. -->
   <head>
+
     <meta charset = "UTF-8">
     <meta name = "viewport" content = "width=device-width, initial-scale = 1.0">
 
     <!-- The title of the web page -->
     <title> DIY-07_Sreelekha_Mondal </title>
 
+    <!-- This <link> element is used to establish the relation between this html document and the specific external CSS document. -->
+    <link rel = "stylesheet" href = "CSS_DIY-07_Sreelekha_Mondal_II.css">
+
   </head>
 
   <!-- The body tag is used define the body of the webpage where the content of the webpage will appear. -->
   <body>
 
-    <p id = "weather"> </p>
+    <!-- This div is used as a heading -->
+    <div class = "heading">CURRENT TEMPERATURE</div>
 
-    <script src = "01.js"></script>
+    <!-- This is the main div where the inpput options and the desired output will be displayed. -->
+    <div class = "div_structure div_color div_text">
+
+      <!-- This part is to take the input for the City or place from the user. -->
+      <!-- This label element is used to display the message to the user, that what to do -->
+      <label for = "option">Select the City you want to see the Current Temperature: </label>
+
+      <!-- 
+        User will select one of the city name from the dropdown list, and the current temperature will be displayed accordingly to the user 
+      -->
+      <select id = "option">
+        <option>Ranchi</option>
+        <option>Raipur</option>
+        <option>Medinipur</option>
+        <option>Kollam</option>
+        <option>Bhubaneswar</option>
+        <option>Mumbai</option>
+        <option>Delhi</option>
+        <option>Jaipur</option>
+      </select>
+
+      <!-- 
+        When user will click the button, the function displayTemp will be called and it will give the output, ii.e, the current temperature 
+        for the selected city. 
+      -->
+      <button type = "submit" class = "button_style" id = "result" onclick = "displayTemp (cityInfo)">SUBMIT</button>
+
+      <!-- This div is used to display the output to the user -->
+      <div id = "temperature"> </div>
+    </div>
+
+    <!-- This <script> element is used to establish the relation between this html document and the specific external JavaScript document. -->
+    <script src = "JS_DIY-07_Sreelekha_Mondal_II.js"></script>
   </body>
 
 <!-- End of the html code. -->

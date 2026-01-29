@@ -171,5 +171,6 @@ function displayTemp (obj)
 
   // Calling the asynchronous function to display the current temperature to the user.
   fetchData(getLat, getLong);
+
   return;
 }
