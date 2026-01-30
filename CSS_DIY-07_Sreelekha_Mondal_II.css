@@ -29,7 +29,7 @@
   border-radius : 20px;
 }
 
-/* Color combination for the div where the options will be displayed and the output will display. */
+/* Color combination for the main div where the options will be displayed and the output will display. */
 .div_color
 {
   box-shadow : 2px -2px 6px #5A0E24;
@@ -37,7 +37,7 @@
   background-color : #F8F4EC;
 }
 
-/* Font size for the text within the main div. */
+/* This class is defined to set the font style for the text within the main div. */
 .div_text
 {
   font-family : Norasi;  

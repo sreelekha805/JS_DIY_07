@@ -63,7 +63,7 @@ let cityInfo =
 
 /*
   This function is created to get the latitude and longitude value from the user input.
-  This function will take the array of object and id which will be the property of each object of the array.
+  This function will take the array of object and id which will be the index number of each object of the array.
   Then it will access the latitude and longitude for the particular city, then the function will return them.
 */
 function getCoordinate (obj, uniqueId)
@@ -83,7 +83,7 @@ function getCoordinate (obj, uniqueId)
 
 /*
   This function is created to fetch data from the api. It will take the coordinates and then it will request the API with the coordinates 
-  and then if the API response is true, it will return the data otherwise the function will through an error.
+  and then if the API response is true, it will display the data(temperature) to the user otherwise the function will through an error.
 */
 async function fetchData(lat, long)
 {
@@ -122,11 +122,10 @@ async function fetchData(lat, long)
 }
 
 /*
-  This function is created to take the user input, i.e, the city name. Then this function will display the desired output means the 
-  current temperature.
+  This function is created to take the user input, i.e, the city name.
   At first, the user input will be accessed.
   Then the index number of the object of the City will be accessed.
-  Then The coordinates will be accessed.
+  Then The coordinates will be accessed(means the value of the lat, long property of the object).
   Then the the function will call the `fetchData` function to fetch the temperarture for the given coordinates.
 */
 function displayTemp (obj)
@@ -164,12 +163,12 @@ function displayTemp (obj)
     i = (i + 1);
   }
 
-  // The latitude and longitude according to the cityId will be stored inthese variables.
+  // The latitude and longitude according to the cityId will be stored in these variables.
   [getLat, getLong] = getCoordinate (obj, cityId);
   console.log(getLat);
   console.log(getLong);
 
-  // Calling the asynchronous function to display the current temperature to the user.
+  // Calling the asynchronous function to fetch and display the current temperature to the user.
   fetchData(getLat, getLong);
 
   return;
